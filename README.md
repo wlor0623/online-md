@@ -2,7 +2,9 @@
 
 一个简洁优雅的在线 Markdown 编辑器，无需安装，打开即用。支持实时预览、本地自动保存、快捷工具栏、性能优化等功能。
 
-![编辑器预览](https://img.shields.io/badge/在线预览-点击体验-blue?style=flat-square)
+🌐 **在线预览**: [markdown.dooo.fun](https://markdown.dooo.fun)
+
+![编辑器预览](https://img.shields.io/badge/在线体验-markdown.dooo.fun-blue?style=flat-square)
 
 ## ✨ 功能特性
 

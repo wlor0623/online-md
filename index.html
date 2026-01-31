@@ -1147,7 +1147,24 @@ function hello() {
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = `document_${new Date().toISOString().slice(0, 10)}.md`;
+
+                    // 尝试从内容中提取 H1 标题作为文件名
+                    let filename = '';
+                    const h1Match = markdownContent.value.match(/^#\s+(.+)$/m);
+                    if (h1Match) {
+                        // 使用 H1 标题，清理非法字符，限制长度
+                        filename = h1Match[1].trim()
+                            .replace(/[\\/:*?"<>|]/g, '-')  // 替换非法字符
+                            .replace(/\s+/g, '_')            // 空格替换为下划线
+                            .substring(0, 50);                // 限制长度
+                    }
+
+                    // 如果没有 H1 或清理后为空，使用默认文件名
+                    if (!filename) {
+                        filename = `document_${new Date().toISOString().slice(0, 10)}`;
+                    }
+
+                    link.download = `${filename}.md`;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
